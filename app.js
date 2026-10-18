@@ -74,5 +74,4 @@ app.post('/update_book/:edit_id',async(req,res)=>{
     return res.redirect('/?status=2')
 })
 
-app.listen(3000,()=>(console.log('server is running...') //server
-))
+app.listen(process.env.PORT || 3000,()=>(console.log('server is running...')))
