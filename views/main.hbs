@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CRUD DATA</title>
+    <link rel="stylesheet" href="/style.css">
+</head>
+<body>
+
+    {{#if message}}
+        <div class="toast" id="toast">{{message}}</div>
+    {{/if}}
+
+    <header class="top">
+        <h1>CRUD DATA</h1>
+        <hr>
+    </header>
+
+    <main class="container">
+
+        <form class="search-bar" method="POST"
+              action="{{#if edit_id}}/update_book/{{edit_id}}{{else}}/employee{{/if}}">
+            <input type="text" name="emp" placeholder="Enter name..." value="{{edit_book.name}}" required autocomplete="off">
+            <button type="submit">{{#if edit_id}}Update{{else}}Create{{/if}}</button>
+        </form>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th class="actions-col">Actions</th>
+                </tr>
+            </thead>
+            <tbody>
+                {{#each employee}}
+                <tr>
+                    <td>{{this.name}}</td>
+                    <td class="actions-col">
+                        <a class="btn edit" href="/?edit_id={{this._id}}">Edit</a>
+                        <a class="btn delete" href="/?delete_id={{this._id}}">Delete</a>
+                    </td>
+                </tr>
+                {{/each}}
+            </tbody>
+        </table>
+
+    </main>
+
+    <footer class="footer">
+        <hr>
+        <p>&copy; 2026 CRUD DATA. All rights reserved.</p>
+    </footer>
+
+    <script>
+        var toast = document.getElementById('toast');
+        if (toast) {
+            var text = toast.textContent.trim();
+            if (text === 'Deleted!') toast.classList.add('red');
+            else if (text === 'Updated!') toast.classList.add('yellow');
+            else toast.classList.add('green');
+            toast.addEventListener('animationend', function () { toast.remove(); });
+            if (window.history.replaceState) window.history.replaceState(null, '', '/');
+        }
+    </script>
+
+</body>
+</html>

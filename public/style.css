@@ -1,0 +1,156 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background: #151515;
+    color: #e6e6e6;
+    font-family: Arial, Helvetica, sans-serif;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+/* Heading + horizontal line */
+.top {
+    padding: 24px 40px 0;
+}
+
+.top h1 {
+    color: #9a9a9a;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-align: left;
+    padding-bottom: 14px;
+}
+
+.top hr {
+    border: none;
+    border-top: 1px solid #3a3a3a;
+}
+
+.container {
+    flex: 1;
+    width: 100%;
+    padding: 30px 20px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.footer {
+    padding: 0 40px 20px;
+    text-align: center;
+}
+
+.footer hr {
+    border: none;
+    border-top: 1px solid #3a3a3a;
+    margin-bottom: 16px;
+}
+
+.footer p {
+    color: #9a9a9a;
+    font-size: 13px;
+}
+
+/* Search bar + submit button */
+.search-bar {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 30px;
+}
+
+.search-bar input {
+    flex: 1;
+    padding: 12px 14px;
+    background: #202020;
+    border: 1px solid #333;
+    border-radius: 6px;
+    color: #e6e6e6;
+    font-size: 15px;
+    outline: none;
+}
+
+.search-bar input:focus {
+    border-color: #3565eb;
+}
+
+.search-bar button {
+    padding: 12px 26px;
+    background: #3565eb;
+    color: #fff;
+    border: none;
+    border-radius: 6px;
+    font-size: 15px;
+    cursor: pointer;
+}
+
+/* Table */
+table {
+    width: 100%;
+    border-collapse: collapse;
+}
+
+th, td {
+    padding: 12px 14px;
+    text-align: left;
+    border-bottom: 1px solid #2a2a2a;
+}
+
+th {
+    color: #9a9a9a;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.actions-col {
+    width: 190px;
+    text-align: right;
+}
+
+/* Edit / Delete buttons (light colours) */
+.btn {
+    display: inline-block;
+    padding: 6px 16px;
+    border-radius: 5px;
+    font-size: 13px;
+    text-decoration: none;
+    margin-left: 6px;
+}
+
+.btn.edit {
+    background: #fff3b0;
+    color: #5c4a00;
+}
+
+.btn.delete {
+    background: #ffc9c9;
+    color: #7a1212;
+}
+
+/* Toast: top-left, then fades out */
+.toast {
+    position: fixed;
+    top: 20px;
+    right: 20px;
+    padding: 12px 22px;
+    border-radius: 6px;
+    color: #fff;
+    font-size: 15px;
+    z-index: 100;
+    animation: toastFade 3s ease forwards;
+}
+
+.toast.red    { background: #e03131; }
+.toast.yellow { background: #f2b705; color: #3a2e00; }
+.toast.green  { background: #2f9e44; }
+
+@keyframes toastFade {
+    0%   { opacity: 0; transform: translateY(-10px); }
+    10%  { opacity: 1; transform: translateY(0); }
+    80%  { opacity: 1; }
+    100% { opacity: 0; visibility: hidden; }
+}
